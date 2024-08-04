@@ -1,2 +1,10 @@
 [build]
-  functions = "netlify/functions"
+  command = "serverless package"
+  publish = ".serverless"
+
+[plugins]
+  [plugins.serverless-python]
+    package = "zip"
+    include = ["netlify/functions", "requirements.txt"]  
+    exclude = ["node_modules"]
+    runtime = "python3.11.9"  
